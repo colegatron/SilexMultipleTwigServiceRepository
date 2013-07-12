@@ -21,8 +21,6 @@ use Symfony\Bridge\Twig\Extension\SecurityExtension;
 use Symfony\Bridge\Twig\Form\TwigRendererEngine;
 use Symfony\Bridge\Twig\Form\TwigRenderer;
 
-
-
 /**
  * Twig integration for Silex.
  *
@@ -30,15 +28,15 @@ use Symfony\Bridge\Twig\Form\TwigRenderer;
  */
 class TwigServiceProvider implements ServiceProviderInterface
 {
-    static protected $providerName = "twig";
+    protected $providerName = "twig";
 
     public function __construct($name = "twig") {
-        self::$providerName = $name;
+        $this->providerName = $name;
     }
 
     public function register(Application $app)
     {
-        $providerName = self::$providerName;
+        $providerName = $this->providerName;
         $app[$providerName.'.options'] = array();
         $app[$providerName.'.form.templates'] = array('form_div_layout.html.twig');
         $app[$providerName.'.path'] = array();
