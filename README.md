@@ -8,7 +8,7 @@ How to use
 
 Register a twig service provider named 'myTwig' :
 
-$app->register(new TwigServiceProvider( 'myTwig' ), array());
+$app->register(new TwigServiceProvider( 'myTwig' ), array());<br>
 $app->share($app->extend('myTwig',function($myTwig,$app) { // your code }));
 
 
@@ -22,7 +22,7 @@ use Silex\Provider\TwigServiceProvider;
 
 // Register a Twig instance as 'twig' if no name is provided and a custom configuration
 $app->register(new TwigServiceProvider(), array(
-                                               'twig.path'    => array(__DIR__.'/../templates'),
+                                                'twig.path'    => array(__DIR__.'/../templates'),
                                           ));
 $app['twig'] = $app->share($app->extend('twig', function($twig, $app) {
     $lexer = new Twig_Lexer($twig, array(
@@ -34,6 +34,7 @@ $app['twig'] = $app->share($app->extend('twig', function($twig, $app) {
     $twang->setLexer($lexer);
     return $twig;
 }));
+
 
 // Register a second Twig instance with a different name but default configuration
 $app->register(new TwigServiceProvider("twang"), array(
